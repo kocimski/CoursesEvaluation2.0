@@ -1,0 +1,17 @@
+<div class="all" *ngIf="course">
+  <h2>{{ course.name | uppercase }} Details</h2>
+
+  <p>Rate:</p>
+  <app-rate></app-rate>
+  <div style="float: right">
+    <img
+      src="{{ course.image }}"
+      style="height: 200px;
+  width: 500px;"
+    />
+  </div>
+
+  <br />
+  <br />
+  <p>{{ course.description }}</p>
+</div>

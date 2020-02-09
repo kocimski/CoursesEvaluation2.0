@@ -1,0 +1,45 @@
+<h1>{{ title }}</h1>
+<nav class="nav nav-pills navigation">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      (click)="selectedCourses()"
+      [ngClass]="nav === 0 ? 'nav-link active' : 'nav-link'"
+      routerLink="/courses"
+      >Courses</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      (click)="selectedAdd()"
+      [ngClass]="nav === 1 ? 'nav-link active' : 'nav-link'"
+      routerLink="/add-course"
+      >Add course</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      (click)="selectedSearch()"
+      [ngClass]="nav === 2 ? 'nav-link active' : 'nav-link'"
+      routerLink="/search"
+      >Search course</a
+    >
+  </li>
+</nav>
+
+
+  <div *ngIf="(isLogged$ | async); else elseBlock" style="float: inside; ">
+<button class="btn btn-primary" (click)="logout()">Logout</button>
+  </div>
+  <ng-template  #elseBlock >
+<!--    <a-->
+<!--      routerLink="/login"-->
+<!--    >Logout</a-->
+<!--    >-->
+  </ng-template>
+
+
+<router-outlet></router-outlet>
+

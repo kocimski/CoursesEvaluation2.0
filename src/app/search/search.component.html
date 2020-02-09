@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-sm-8">
+    <div id="allform">
+      <form role="form">
+        <div class="form-group">
+          <label>Subject</label>
+          <input
+            placeholder="Nazwa szukanego kursu"
+            name="name"
+            [(ngModel)]="name"
+            type="text"
+            class="validate"
+          />
+          <br /><br />
+
+          <div class="custom-slider">
+            <label>ECTS:</label>
+            <ng5-slider
+              [(value)]="minEcts"
+              [(highValue)]="maxEcts"
+              [options]="ectsOptions"
+            ></ng5-slider>
+          </div>
+
+          <div class="custom-slider">
+            <label>Rate: </label>
+            <ng5-slider
+              [(value)]="minRate"
+              [(highValue)]="maxRate"
+              [options]="rateOptions"
+            ></ng5-slider>
+          </div>
+          <div class="custom-slider">
+            <label>Term </label>
+            <ng5-slider
+              [(value)]="minTerm"
+              [(highValue)]="maxTerm"
+              [options]="termOptions"
+            ></ng5-slider>
+          </div>
+
+          <div class="submit">
+            <hr />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <app-course-detail
+      style="justify-content: center"
+      [course]="selectedCourse"
+    ></app-course-detail>
+  </div>
+  <div class="col-sm-12">
+    <ul class="courses" style="height: 1000px;">
+      <li
+        [class.selected]="course === selectedCourse"
+        (click)="onSelect(course)"
+        *ngFor="
+          let course of courses
+            | searchByName: name
+            | searchByMinECTS: minEcts
+            | searchByMaxECTS: maxEcts
+            | searchByMinRating: minRate
+            | searchByMaxRating: maxRate
+            | searchByMinTerm: minTerm
+            | searchByMaxTerm: maxTerm
+        "
+      >
+        {{ course.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--    <a routerLink="/details/{{course.$key}}">{{course.name}}</a>-->
+<!-- 
+| searchByMinECTS: minEcts
+| searchByMaxECTS: maxEcts
+| searchByMinRating: minRate
+| searchByMaxRating: maxRate
+| searchByMinTerm: minTerm
+| searchByMinTerm: maxTerm -->

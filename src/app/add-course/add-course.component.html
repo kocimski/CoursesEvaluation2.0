@@ -1,0 +1,189 @@
+<div class="container allform">
+  <form novalidate [formGroup]="myform">
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger': subject.invalid && (subject.dirty || subject.touched),
+        'has-success': subject.valid && (subject.dirty || subject.touched)
+      }"
+    >
+      <label>Subject</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="subject"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="subject.errors && (subject.dirty || subject.touched)"
+      >
+        <p *ngIf="subject.errors.required">Subject is required</p>
+      </div>
+
+      <label>Image</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="image"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="subject.errors && (subject.dirty || subject.touched)"
+      >
+        <p *ngIf="subject.errors.required">Image is required</p>
+      </div>
+
+      <!--
+          <pre>Valid? {{ myform.controls.name.controls.subject.valid }}</pre>
+          <pre>Dirty? {{ myform.controls.name.controls.subject.dirty }}</pre>
+        -->
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger': ects.invalid && (ects.dirty || ects.touched),
+        'has-success': ects.valid && (ects.dirty || ects.touched)
+      }"
+    >
+      <label>Ects</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="ects"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="ects.errors && (ects.dirty || ects.touched)"
+      >
+        <p *ngIf="ects.errors.required">Ects points are required</p>
+      </div>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger': term.invalid && (term.dirty || term.touched),
+        'has-success': term.valid && (term.dirty || term.touched)
+      }"
+    >
+      <label>Term</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="term"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="term.errors && (term.dirty || term.touched)"
+      >
+        <p *ngIf="term.errors.required">Term is required</p>
+      </div>
+
+      <!--
+        <pre>Valid? {{ myform.controls.term.valid }}</pre>
+        <pre>Dirty? {{ myform.controls.term.dirty }}</pre>
+      -->
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger':
+          maxStudents.invalid && (maxStudents.dirty || maxStudents.touched),
+        'has-success':
+          maxStudents.valid && (maxStudents.dirty || maxStudents.touched)
+      }"
+    >
+      <label>Max count of students</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="maxStudents"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="maxStudents.errors && (maxStudents.dirty || maxStudents.touched)"
+      >
+        <p *ngIf="maxStudents.errors.required">
+          Max count of students is required
+        </p>
+      </div>
+    </div>
+
+    <!--
+      <pre>{{ maxStudents.errors | json }}</pre>
+    -->
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger':
+          activities.invalid && (activities.dirty || activities.touched),
+        'has-success':
+          activities.valid && (activities.dirty || activities.touched)
+      }"
+    >
+      <label>Activities</label>
+      <select class="form-control" formControlName="activities">
+        <option value="">Please select a activities</option>
+        <option *ngFor="let act of acts" [value]="act">{{ act }} </option>
+      </select>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger':
+          description.invalid && (description.dirty || description.touched),
+        'has-success':
+          description.valid && (description.dirty || description.touched)
+      }"
+    >
+      <label>Description</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="description"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="description.errors && (description.dirty || description.touched)"
+      >
+        <p *ngIf="description.errors.required">Description is required</p>
+        <p *ngIf="description.errors.minlength">
+          Description must be 30 characters long, we need another
+          {{
+            description.errors.minlength.requiredLength -
+              description.errors.minlength.actualLength
+          }}
+          characters
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <br />
+      <p>Rating</p>
+      <app-rate></app-rate>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="float: right;"
+      (click)="submit()"
+    >
+      Add
+    </button>
+    <br />
+    <br />
+
+    <pre>{{ myform.value | json }}</pre>
+  </form>
+</div>
