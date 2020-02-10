@@ -1,5 +1,5 @@
 export class Course {
-  id?: string;
+  $id?: string;
   image: string;
   name: string;
   ects: number;

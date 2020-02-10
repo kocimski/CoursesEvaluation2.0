@@ -2,7 +2,7 @@ import { Course } from "./course";
 
 export const COURSES: Course[] = [
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Algebra",
     ects: 6,
@@ -15,7 +15,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Analysis",
     ects: 6,
@@ -26,10 +26,9 @@ export const COURSES: Course[] = [
       "This course is intended for students in computer science. It contains an introduction to differential and integral calculus of functions of one variable",
     rate: -1,
     rateNumber: 0
-
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Functional Programing",
     ects: 2,
@@ -42,7 +41,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "OOP",
     ects: 3,
@@ -55,7 +54,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Data Base",
     ects: 4,
@@ -68,7 +67,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Physics",
     ects: 6,
@@ -81,7 +80,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Imperative Programing",
     ects: 4,
@@ -94,7 +93,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Differential calculus",
     ects: 4,
@@ -107,7 +106,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Statistics",
     ects: 4,
@@ -120,7 +119,7 @@ export const COURSES: Course[] = [
     rateNumber: 0
   },
   {
-    id: "",
+    $id: "",
     image: "",
     name: "Introduction to UNIX",
     ects: 1,

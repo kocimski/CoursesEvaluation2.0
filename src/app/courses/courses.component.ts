@@ -27,25 +27,27 @@ export class CoursesComponent implements OnInit {
   }
 
   getCourses() {
-    this.courseService
-      .getCourses()
+    this.courseDataService
+      .getCoursesFromDataBase()
       .snapshotChanges()
-      .pipe(
-        map(changes =>
-          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-        )
-      )
-      .subscribe(courses => {
-        this.courses = courses;
+      .forEach(coursesSnaphot => {
+        this.courses = [];
+        coursesSnaphot.forEach(coursesSnap => {
+          const crs = coursesSnap.payload.toJSON();
+          const loadKey = "$id";
+          crs[loadKey] = coursesSnap.key;
+          this.courses.push(crs as Course);
+        });
       });
   }
 
   onSelect(course: Course) {
     this.selectedCourse = course;
+    console.log(this.courses);
   }
 
   deleteCourse(course: Course) {
-    this.courseDataService.deleteCourseFromDataBase(course.id);
+    this.courseDataService.deleteCourseFromDataBase(course.$id);
   }
 }
 

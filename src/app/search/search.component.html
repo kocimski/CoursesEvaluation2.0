@@ -46,14 +46,9 @@
       </form>
     </div>
   </div>
+
   <div class="col-sm-4">
-    <app-course-detail
-      style="justify-content: center"
-      [course]="selectedCourse"
-    ></app-course-detail>
-  </div>
-  <div class="col-sm-12">
-    <ul class="courses" style="height: 1000px;">
+    <ul class="courses">
       <li
         [class.selected]="course === selectedCourse"
         (click)="onSelect(course)"
@@ -71,6 +66,12 @@
         {{ course.name }}
       </li>
     </ul>
+  </div>
+  <div class="col-sm-11">
+    <app-course-detail
+      style="justify-content: center"
+      [course]="selectedCourse"
+    ></app-course-detail>
   </div>
 </div>
 

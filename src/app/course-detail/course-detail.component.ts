@@ -3,6 +3,7 @@ import { Course } from "../course";
 import { Location } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
 import { CourseService } from "../service/course.service";
+import { CoursesdataService } from "../service/coursesdata.service";
 
 @Component({
   selector: "app-course-detail",
@@ -15,14 +16,14 @@ export class CourseDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private courseService: CourseService,
     private locatioin: Location,
+    private courseDataService: CoursesdataService
   ) {}
 
+  deleteCourse(course) {
+    this.courseDataService.deleteCourseFromDataBase(course.$id);
+  }
+
   ngOnInit() {}
-
-
-
-
-
 }
 
 // updateActive(isActive: boolean) {
